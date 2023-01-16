@@ -9,29 +9,43 @@
   </head>
   <body>
     <!-- div with three nested divs -->
-    <div id="navbar">
-      <div id="nav-search">Search Inventory</div>
-      <div id="nav-current">Current Inventory</div>
+    <!-- <div id="navbar">
+      <div id="nav-add">Add Inventory</div>
+      <div id="nav-inventory">Inventory</div>
       <div id="nav-logout"><a href="logout">Logout</a></div>
-    </div>
-    <!-- Div with empty list nested -->
-    <div id="search-inventory">
-      <h1>Search Inventory</h1>
-      <input type="text" id="search" placeholder="Search" />
-      <ul id="search-results">
-        <li>Search Results</li>
-      </ul>
+    </div> -->
+    <div id="add-inventory">
+      <h1>Add to Inventory</h1>
+      <input type="text" id="item-name" placeholder="item name" />
+      <textarea id="item-description" placeholder="item description"></textarea>
+      <input type="submit" id="add-item" value="Add Item" />
     </div>
     <div id="inventory">
+      <h1>Search</h1>
+      <input type="text" id="search" placeholder="search" />
+      <input type="submit" id="clear" value="Clear" />
       <h1>Inventory</h1>
-      <ul id="current-inventory">
-        <!-- populate list with grocery items -->
-        <li>Apple</li>
-        <li>Orange</li>
-        <li>Inventory</li>
+      <ul id="inventory-list">
+        <li>
+          <div>
+            <h3>Testing 1</h3>
+            <textarea>Description of testing 1</textarea>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Testing 2</h3>
+            <textarea>Description of testing 2</textarea>
+          </div>
+        </li>
       </ul>
+      <div id="list-options">
+        <input type="submit" id="save" value="Save" disabled />
+        <input type="submit" id="delete-item" value="Delete" disabled />
+        <input type="submit" id="reset" value="Reset" disabled />
+      </div>
     </div>
   </body>
   <!-- Include index.js -->
-  <script src="index.js"></script>
+  <!-- <script src="index.js"></script> -->
 </html>

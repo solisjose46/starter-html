@@ -1,0 +1,101 @@
+<!-- starter html -->
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+  <style>
+    /* :root {
+      --primary-font-size: 1.2rem;
+    }
+
+    @media only screen and (min-width: 980px) {
+      :root {
+        --primary-font-size: 2rem;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      :root {
+        --primary-font-size: 2.5rem;
+      }
+    }
+
+    @media only screen and (min-width: 1440px) {
+      :root {
+        --primary-font-size: 3rem;
+      }
+    }
+
+    html * {
+      font-size: var(--primary-font-size);
+    } */
+    /* Set Minimum height of search-inventory div and inventory div to height of viewport */
+    #search-inventory,
+    #inventory {
+      min-height: 100vh;
+    }
+    #search-inventory {
+      display: inline-block;
+    }
+    #inventory {
+      display: none;
+    }
+    /* Stick navbar to top of viewport and set divs to left to right */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+    }
+  </style>
+  <head>
+    <title>Kitchen Inventory</title>
+  </head>
+  <body>
+    <!-- div with three nested divs -->
+    <div id="navbar">
+      <div id="nav-search">Search Inventory</div>
+      <div id="nav-current">Current Inventory</div>
+      <div id="nav-logout"><a href="logout">Logout</a></div>
+    </div>
+    <!-- Div with empty list nested -->
+    <div id="search-inventory">
+      <h1>Search Inventory</h1>
+      <input type="text" id="search" placeholder="Search" />
+      <ul id="search-results">
+        <li>Search Results</li>
+      </ul>
+    </div>
+    <div id="inventory">
+      <h1>Inventory</h1>
+      <ul id="current-inventory">
+        <!-- populate list with grocery items -->
+        <li>Apple</li>
+        <li>Orange</li>
+        <li>Inventory</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    (function () {
+      // Set search-inventory display to none when nav-current is clicked and set inventory display to absolute
+      document
+        .getElementById("nav-current")
+        .addEventListener("click", function () {
+          document.getElementById("search-inventory").style.display = "none";
+          document.getElementById("inventory").style.display = "inline-block";
+        });
+      // Set inventory display to none when nav-search is clicked and set search-inventory display to absolute
+      document
+        .getElementById("nav-search")
+        .addEventListener("click", function () {
+          document.getElementById("inventory").style.display = "none";
+          document.getElementById("search-inventory").style.display =
+            "inline-block";
+        });
+    })();
+  </script>
+</html>

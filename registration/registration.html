@@ -1,0 +1,75 @@
+<!-- starter html -->
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+  <style>
+    :root {
+      --primary-font-size: 1.2rem;
+    }
+
+    @media only screen and (min-width: 980px) {
+      :root {
+        --primary-font-size: 2rem;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      :root {
+        --primary-font-size: 2.5rem;
+      }
+    }
+
+    @media only screen and (min-width: 1440px) {
+      :root {
+        --primary-font-size: 3rem;
+      }
+    }
+
+    html * {
+      font-size: var(--primary-font-size);
+    }
+    /* Center the form vertically and horizontally and place labels above input fields */
+    /* Give form light grey border with round corners */
+    form {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      padding: 1.1rem;
+    }
+    /* Place logout link in bottom right corner */
+    a {
+      position: absolute;
+      bottom: 0.1rem;
+      right: 0.1rem;
+    }
+    /* Give bottom margin to username input field, password input field */
+    input[name="username"],
+    input[name="password"],
+    input[name="confirmPassword"] {
+      margin-bottom: 1rem;
+    }
+  </style>
+  <head>
+    <title>Registeration</title>
+  </head>
+  <body>
+    <!-- Log in form with username, password and confirm password field -->
+    <form id="login-form">
+      <label>Username</label>
+      <input type="text" name="username" />
+      <label>Password</label>
+      <input type="password" name="password" />
+      <label>Confirm Password</label>
+      <input type="password" name="confirmPassword" />
+      <button type="submit">Submit</button>
+    </form>
+    <!-- Login link -->
+    <a href="login.html">Login</a>
+  </body>
+  <script></script>
+</html>

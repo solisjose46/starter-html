@@ -1,0 +1,47 @@
+/* :root {
+      --primary-font-size: 1.2rem;
+    }
+
+    @media only screen and (min-width: 980px) {
+      :root {
+        --primary-font-size: 2rem;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      :root {
+        --primary-font-size: 2.5rem;
+      }
+    }
+
+    @media only screen and (min-width: 1440px) {
+      :root {
+        --primary-font-size: 3rem;
+      }
+    }
+
+    html * {
+      font-size: var(--primary-font-size);
+    } */
+/* Set Minimum height of search-inventory div and inventory div to height of viewport */
+#search-inventory,
+#inventory {
+  min-height: 100vh;
+}
+#search-inventory {
+  display: inline-block;
+}
+#inventory {
+  display: none;
+}
+/* Stick navbar to top of viewport and set divs to left to right */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}

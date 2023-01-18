@@ -19,7 +19,7 @@ enum InventoryItemState {
   DELETED,
 }
 
-const InventoryAPI = "http://127.0.0.1:8080/Inventory"
+const InventoryAPI = "http://127.0.0.1:8080/Inventory";
 
 class InventoryItem implements HtmlElement {
   domElement: HTMLElement;
@@ -34,12 +34,14 @@ class InventoryItem implements HtmlElement {
     itemState: InventoryItemState,
     itemId?: string
   ) {
-
-    if(itemState !== InventoryItemState.ORIGINAL && itemState !== InventoryItemState.NEW) {
+    if (
+      itemState !== InventoryItemState.ORIGINAL &&
+      itemState !== InventoryItemState.NEW
+    ) {
       throw new Error("Invalid item state.");
     }
 
-    if(itemState === InventoryItemState.ORIGINAL && !itemId) {
+    if (itemState === InventoryItemState.ORIGINAL && !itemId) {
       throw new Error("Item ID is required for original items.");
     }
 
@@ -49,13 +51,33 @@ class InventoryItem implements HtmlElement {
     this.itemState = itemState;
     this.createDomElement();
   }
+
   private createDomElement(): void {
-    const itemWrapper: HTMLElement = document.createElement("div");
+    const itemWrapper: HTMLElement = document.createElement("li");
     const itemHeader: HTMLElement = document.createElement("h3");
     const description: HTMLElement = document.createElement("textarea");
 
     itemHeader.innerText = this.itemName;
     description.innerText = this.itemDescription;
+
+    // set itemHeader display to display
+    itemHeader.style.display = "none";
+    // set itemDescription placeholder to "Add a description"
+    description.setAttribute("placeholder", "Add a description");
+
+    itemHeader.addEventListener("click", function () {
+      if (description.style.display === "none") {
+        description.style.display = "inline";
+      } else {
+        description.style.display = "none";
+      }
+    });
+
+    // On description change, update itemDescription with new value
+    description.addEventListener("change", () => {
+      this.itemDescription = description.getAttribute("value") || "";
+      this.itemState = InventoryItemState.UPDATED;
+    });
 
     itemWrapper.appendChild(itemHeader);
     itemWrapper.appendChild(description);
@@ -67,11 +89,11 @@ class InventoryItem implements HtmlElement {
   updateItem(itemName: string, itemDescription: string): void {
     // If item is original and updated then want to update it in the database
     // otherwise just update the frontend
-    if(this.itemState === InventoryItemState.ORIGINAL) this.itemState = InventoryItemState.UPDATED;
+    if (this.itemState === InventoryItemState.ORIGINAL)
+      this.itemState = InventoryItemState.UPDATED;
     this.itemName = itemName;
     this.itemDescription = itemDescription;
-    
-    
+
     this.createDomElement();
   }
 
@@ -138,7 +160,8 @@ class InventoryList implements HtmlElement {
     // If !itemName then nothing is being searched so display all items that are not deleted
     if (!itemName) {
       this.inventoryItems.forEach((item) => {
-        if(item.itemState !== InventoryItemState.DELETED) item.displayElement();
+        if (item.itemState !== InventoryItemState.DELETED)
+          item.displayElement();
       });
       return;
     }
